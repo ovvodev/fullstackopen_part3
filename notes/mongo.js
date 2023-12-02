@@ -6,6 +6,8 @@ if (process.argv.length<3) {
 }
 
 const password = process.argv[2]
+const content = process.argv[3]
+const important = process.argv[4]
 
 const url =
   `mongodb+srv://ovvodev:${password}@part-3.o6zeos8.mongodb.net/notes?retryWrites=true&w=majority`
@@ -20,8 +22,8 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 const note = new Note({
-  content: 'HTML is Easy',
-  important: true,
+  content: content,
+  important: important,
 })
 
 note.save().then(result => {
@@ -29,9 +31,9 @@ note.save().then(result => {
   mongoose.connection.close()
 })
 
-Note.find({}).then(result => {
+/*Note.find({}).then(result => {
     result.forEach(note => {
       console.log(note)
     })
     mongoose.connection.close()
-  })
+  })*/
