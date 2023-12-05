@@ -10,7 +10,8 @@
     "build:ui": "rm -rf dist && cd /home/kostas/Documents/GitHub/fullstackopen_part2/phonebook/ && npm run build && cp -r dist /home/kostas/Documents/GitHub/fullstackopen_part3/phonebook/",
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "logs:prod": "fly logs"
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
   },
   "author": "kostas",
   "license": "ISC",
@@ -23,6 +24,9 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.4.11",
+    "eslint": "^8.55.0",
+    "eslint-config-xo": "^0.43.1",
+    "eslint-plugin-react": "^7.33.2",
     "nodemon": "^3.0.1"
   }
 }

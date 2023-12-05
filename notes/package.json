@@ -10,7 +10,8 @@
     "build:ui": "rm -rf dist && cd /home/kostas/Documents/GitHub/fullstackopen_part2/example1 && npm run build && cp -r dist ../notes",
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "logs:prod": "fly logs"
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
   },
   "author": "Kostas Papathanasiou",
   "license": "MIT",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.4.11",
+    "eslint": "^8.55.0",
     "nodemon": "^3.0.1"
   }
 }
