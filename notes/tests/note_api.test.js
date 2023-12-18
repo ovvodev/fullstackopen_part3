@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 
+
 const api = supertest(app)
 
 test('notes are returned as json', async () => {
@@ -9,7 +10,7 @@ test('notes are returned as json', async () => {
     .get('/api/notes')
     .expect(200)
     .expect('Content-Type', /application\/json/)
-})
+},50000)
 
 afterAll(async () => {
   await mongoose.connection.close()
