@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
 
-
 const noteSchema = new mongoose.Schema({
   content: {
     type: String,
-    minLength: 5,
-    required: true,
+    minlength: 5,
+    required: true
   },
   important: Boolean,
   user: {
@@ -21,6 +20,5 @@ noteSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
-
 
 module.exports = mongoose.model('Note', noteSchema)
