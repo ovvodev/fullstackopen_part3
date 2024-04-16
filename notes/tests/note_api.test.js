@@ -154,10 +154,9 @@ describe('when there is initially one user at db', () => {
       .expect('Content-Type', /application\/json/)
 
     const usersAtEnd = await helper.usersInDb()
-    expect(usersAtEnd).toHaveLength(usersAtStart.length + 1)
-
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length + 1)
     const usernames = usersAtEnd.map(u => u.username)
-    expect(usernames).toContain(newUser.username)
+    assert(usernames.includes(newUser.username))
   })
 
   test('creation fails with proper statuscode and message if username already taken', async () => {
@@ -175,10 +174,11 @@ describe('when there is initially one user at db', () => {
       .expect(400)
       .expect('Content-Type', /application\/json/)
 
-    expect(result.body.error).toContain('expected `username` to be unique')
-
     const usersAtEnd = await helper.usersInDb()
-    expect(usersAtEnd).toHaveLength(usersAtStart.length)
+    assert(result.body.error.includes('expeted `username` to be unique'))
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+    
   })
 })
 
